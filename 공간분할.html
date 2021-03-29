@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+	.a {border:5px dotted blue;}
+	.b {border:5px dotted red;}
+	span{ background-color: green;}
+	/* span : inline 요소 컨텐츠 만큼 만 자리 차지 ///  div,p : block요소 , 한줄 모두 차지  */
+	p{color : black ; border:1px solid red;}
+	img{ display : block;
+	boder: 1px solid red;}
+
+</style>
+</head>
+<body>
+<!-- 공간 분할 : div ,p , span  -->
+<div class = "a">
+	공간분할에는 div 태그가 있다<br>
+	공간분할에는 div 태그가 있다
+	<p style="background-color: yellow;">공간분할에는 div 태그가 있다</p>
+	<p>공간분할에는 div 태그가 있다</p>
+	<p>공간분할에는 p태그가 있다. 일반적으로 <span> 한줄에 </span> 사용된다.</p>
+
+</div>
+
+<img src="sources/03/images/activity.jpg" 
+alt="activity"
+with="100px" height = "100px"/> 
+<!-- img, span은 인라인 경로 -->
+<!-- 절대경로는 /로 시작 --> 
+
+<img src="/WebProject/sources/03/images/healing.jpg" 
+alt="healing"
+with="100px" height = "100px"/> 
+
+<img src="https://localhost:9090/WebProject/sources/03/images/healing.jpg" 
+alt="healing"
+with="100px" height = "100px"/> 
+
+
+<div class = "b">
+	<p>공간분할에는 div 태그가 있다</p>
+	<p>공간분할에는 div 태그가 있다</p>
+	<p>공간분할에는 div 태그가 있다</p>
+	<p>공간분할에는 div 태그가 있다</p>
+	<p>공간분할에는 p태그가 있다. 일반적으로 <span> 한줄에 </span> 사용된다.</p>
+
+</div>
+
+</body>
+</html>
