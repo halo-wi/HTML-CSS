@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+	<style>
+	label {
+		background-color: red;
+			display: inline-block;
+	width: 120px;
+	}
+</style>
+</head>
+<body>
+	<h1>입력양식</h1>
+	<form action="register.jsp">
+		<label>아이디:</label> <input type="text" name="userid"> <br>
+
+		별명 <input type="text" name="nickname" value="z"> <br>
+
+		비밀번호 <input type="password" name="userpw"> <br>
+		<!-- checkbox : 서로독립적
+			 radio :  여러개중 하나만 선택-->
+
+		<fieldset>
+			<legend>수강과목1</legend>
+			<input type="checkbox" name="subject" value="자바" checked="checked">
+			자바 <input type="checkbox" name="subject" value="웹"> 웹 <input
+				type="checkbox" name="subject" value="프레임워크"> 프레임워크<br>
+			<input type="submit">
+		</fieldset>
+		<fieldset>
+			<legend>수강과목2</legend>
+			<input type="checkbox" name="subject2" value="자바2" checked="checked">
+			자바2 <input type="checkbox" name="subject2" value="웹2"> 웹2 <input
+				type="checkbox" name="subject2" value="프레임워크2"> 프레임워크2<br>
+			<input type="submit">
+		</fieldset>
+
+		<fieldset>
+			<legend>성별</legend>
+			<input type="radio" name="gender" values="남">남자 <input
+				type="radio" name="gender" values="여">여자
+		</fieldset>
+		한개선택 <select name="week">
+			<option>월요일</option>
+			<option>수요일</option>
+			<option value="friday">금요일</option>
+			<option selected="selected">일요일</option>
+			<input type="submit" value="서버전송">
+		<br>
+		</select> 여러개선택 <select name="week" multiple>
+			<option>월요일</option>
+			<option>수요일</option>
+			<option value="friday">금요일</option>
+			<option selected="selected">일요일</option>
+			<input type="submit" value="서버전송">
+			<br>
+		</select> 댓글
+		<textarea row="5" cols="50"> sample </textarea>
+		<input type="submit" value="서버전송"> <input type="reset"
+			value="초기화"> <input type="button" value="js코드"
+			onclick="alter('버튼')"> <input type="image"
+			src="..\sources\04\images\mic.png"> <input type="file">
+	</form>
+
+
+	<img src="..\sources\04\images\link.png">
+
+	<a href="register.jsp?userid=jj"> 등록창으로 가기 </a>
+	<!-- get방식: 주소창에 입력정보가 서버로 전송되는 것이 보인다.
+		 -> 포스트 제외 전부
+		 + a태그를 이용해서 href속성으로 링크를 거는 것
+	 	 post 방식: 주소창에 입력정보가 서버로 전송되는 것이 안보인다.
+	 	 -> from 태그에 method = "psot" 
+	 	 -->
+	<hr>
+	<h1>입력양식</h1>
+	<form action="register.jsp" method="post">
+		아이디 <input type="text" name="userid"> <br> 비밀번호 <input
+			type="password" name="userpw"> <br> <input type="submit"
+			value="서버전송"> <input type="hidden" name="phone"
+			value="10101010">
+
+	</form>
+	<a href="register.jsp?userid=jj"> 등록창으로 가기 </a>
+
+
+</body>
+</html>
