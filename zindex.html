@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+img {
+  position: absolute;
+  left: 10px;
+  top: 20px;
+  z-index: -1;
+}
+
+div {width: 100px; height: 100px; border: 1px solid red;}
+
+h1{background-color: yellow;
+z-index: 2;}
+
+#box1{ position: relative;
+		background-color: green;
+		z-index: 2;
+		}
+
+
+
+
+#box2{ position: relative;
+		top: -20px;
+		left: 20px;
+		background-color: orange;
+		z-index : 1;
+		}
+#box3{ position: relative;
+		top: -40px;
+		left: 40px;
+		background-color: blue;
+		z-index: 10;
+		}
+
+</style>
+</head>
+<body>
+
+<h1>The z-index Property</h1>
+
+<img src="https://www.w3schools.com/cssref/tryit.asp?filename=trycss_zindex"
+ width="100" height="140">
+
+<p>Because the image has a z-index of -1, it will be placed behind the heading.</p>
+
+<div id ="box1"></div>
+<div id ="box2"></div>
+<div id ="box3"></div>
+
+
+</body>
+</html>
