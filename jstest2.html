@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<script>
+//동적타이핑
+//변수 사용없이 사용가능
+s1=100;
+document.write("<h1>" + s1 + "</h1>");
+</script>
+</head>
+<body>
+	<h1>js문법</h1>
+	<script>
+		name = "김성휘";
+		s1 = "javascript" + name;
+		s2 = 'javascript2' + name;
+		s3 = `javascript3 ${name}`; //백틱
+
+		console.log(s1);
+		console.log(s2);
+		console.log(s3);
+		document.write("<h1>" + s1 + "</h1>");
+		document.write(`<h1> ${s2} </h1>`);
+		document.write(`<h1> ${s3} </h1>`);
+	</script>
+</body>
+</html>
