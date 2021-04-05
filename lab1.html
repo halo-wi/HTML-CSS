@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script>
+//callback 함수 -- 함수호출을 내가 하지 않고 정의만 , 호출은 받은쪽에서
+window.onload = function() {
+	a=document.getElementById("operater").value;
+	alert(a);
+	
+	btn1.onclick = execute();
+};
+
+function execute() {
+	var operater = document.getElementById("operater").value;
+	var num1 = document.getElementById("n1").value;
+	var num2 = document.getElementById("n2").value;
+	var num3 = 0;
+	if(operater == '+') num3=Number(num1)+Number(num2);
+	if(operater == '-') num3=num1-num2;
+	if(operater == '*') num3=num1*num2;
+	if(operater == '/') num3=num1/num2;
+	if(operater == '%') num3=num1%num2;
+	document.getElementById("result").value = num3;
+	
+};
+</script>
+</head>
+<body>
+<h1>사칙연산</h1>
+<hr>
+<input type= "number" id = "n1">
+<select id = "operater">
+	<option>+</option>
+	<option>-</option>
+	<option>*</option>
+	<option>/</option>
+	<option value = "%">나머지</option>
+	</select>
+	
+<input type= "number" id = "n2">
+<input type= "button" value = "연산하기" id="btn1">
+<input type= "number" id = "result" readonly="readonly">
+
+
+
+</body>
+</html>
