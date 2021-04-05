@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script>
+//호이스팅 단계: var을 먼저 실행(멘위로 올린다)
+a=10;
+document.write(a);
+document.write(b);//undefined
+var b =20;
+document.write(b);
+</script>
+<script>
+for(i=1; i2<=5; i2++){
+	document.write(i);
+}
+document.write("<h1>+"+i+"</h1>");
+
+for(var i2=6; i2<=10; i2++){
+	document.write(i);
+}
+document.write("<h1>+"+i2+"</h1>");
+
+for(let i3=11; i3<=20; i3++){
+	document.write(i3);
+}
+document.write("<h1>+"+i2+"</h1>");
+
+//var없음: global
+//var: global, 호이스팅
+//let: 블럭 내에서 유효
+
+</script>
+
+</head>
+<body>
+<h1>javaScript</h1>
+</body>
+</html>
