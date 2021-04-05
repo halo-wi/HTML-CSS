@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<style>
+	 table, td{
+	 	border: 2px solid black;
+	 	border-collapse: collapse;
+	 }
+	 td{
+	 	padding: 10px;
+	 	font-size: 12px
+	 }
+	 td[data]{
+	 	background-color: red;
+	 }
+</style>
+<script>
+	window.onload = function() {
+		btn1.onclick = f1;
+		btn2.onclick = f2;
+		btn3.onclick = f3;
+		btn4.onclick = f4;
+		btn5.onclick = f5;
+	}
+
+	function f1() {
+		var num = Number(prompt("숫자입력", 0));
+
+		if (num > 0) {
+			here.innerHTML += `${num}은 양수`;
+		} else if (num < 0) {
+			here.innerHTML += `${num}은 음수`;
+		} else
+			here.innerHTML += `${num}은 0`;
+	}
+
+	function f2() {
+		var num = Number(prompt("숫자입력", 0));
+		here.innerHTML = num % 2 == 0 ? "짝" : "홀";
+
+	}
+
+	/*
+	 Number() : 숫자만 가능
+	 parseint() : 앞부분 숫자만 취한다 
+	 */
+
+	function f3() {
+		var score = prompt("숫자 입력(100 100 100)", 0);
+		var arr = score.split(" ");//[100, 100, 100]
+		var total = 0;
+		for ( var idx in arr) {
+			total += Number(arr[idx]);
+		}
+		var avg = total / arr.length;
+		var grade = "가"
+		
+		switch (Math.floor(avg/10)) {
+		case 10:
+		case 9: grade = "수"
+			break;
+		case 8: grade = "우"
+			break;
+		case 7: grade = "미"
+			break;
+		case 6: grade = "양"
+		}
+		here.innerHTML = `${avg}는 ${grade}`;
+	}
+
+	function f4() {
+		var arr =["banana", "orange", "apple", "melon"]
+		here.innerHTML = "";
+		for(var idx in arr){
+			here.innerHTML += arr[idx] + "<br>";
+		}
+		for(var i=1; i<=arr.length; i++){
+			here.innerHTML += arr[i] + "<br>";
+		}
+	}
+	
+	function f5() {
+		var memnum = Number(document.getElementById("mem").value);
+		var colnum = Number(document.getElementById("col").value);
+		here.innerHTML = memnum;
+		var rownum = 0;
+		var count = 0;
+		if (memnum%colnum == 0){
+			rownum=memnum/colnum;
+		}
+		else rownum = Math.ceil(memnum/colnum);
+
+		here.innerHTML = rownum;
+		var s="<table>"
+		for (var i=1; i<= rownum; i++){
+			s += "<tr>"
+			for(var j=1; j<= colnum; j++){
+				count++
+				s += "<td data='"+count+"'>"+ count +"</td>"
+				if(count==memnum) break;
+			}
+			s += "</tr>"
+		}
+		s+="</table>"
+		
+		here.innerHTML += s
+		
+	}
+	
+</script>
+</head>
+<body>
+	<button id="btn1" type="button" class="btn btn-warning" >양수/음수?</button>
+	<button id="btn2" type="button" class="btn btn-warning" >홀짝?</button>
+	<button id="btn3" type="button" class="btn btn-warning" >평균/수우미양가?</button>
+	<button id="btn4" type="button" class="btn btn-warning" >배열연습</button>
+	<hr>
+	<input type ="number" id = "mem"> 몇명?</input>
+	<input type ="number" id = "col"> 몇줄?</input>
+	<button id="btn5" type="button" class="btn btn-default" >자리배치</button>
+	<hr>
+	<div id="here"></div>
+	
+	
+	
+	
+</body>
+</html>
