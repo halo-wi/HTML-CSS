@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script>
+//internal javascript ... head...body  모든 위치가능
+	alert("1");
+ 	console.log("1번째 실행");
+	
+ </script>
+ 
+ <script src="external.js"></script>
+ <script>
+ call();
+ call2();
+ </script>
+</head>
+<!-- 인라인 자바 스크립트 -->
+<body onload = "alert('load완료');">
+<script>
+alert("2");
+ console.log("2번째 실행");
+ cons
+ </script>
+ 
+ <h1 onclick="alert('click');">자바스크립트</h1>
+ <div id = "here">여기</div>
+ <script>
+ alert("3");
+ console.log("3번째 실행");
+ document.getElementById("here").innerHTML = "<p>변경하기</p>";
+
+ </script>
+</body>
+</html>
