@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script>
+	//var은 함수내 에서만 사용가능한 지역변수
+	//var이 없으면 전체에서 접근 가능 한 글로벌변수
+	//let는 블럭내 에서만 접근가능
+	function a() {
+		var count = 0;
+		var output = "";
+		var s = "";
+		for (var i = 0; i < 5; i++) {
+			count++;
+			s = "";
+			for (var j = 0; j < count; j++) {
+				s += `*`
+			}
+			s += "\n"
+			output += s;
+		}
+		alert(output);
+	};
+
+	function b() {
+		var count = 0;
+		var output = "";
+		s = "";
+		for (i = 0; i < 5; i++) {
+			count++;
+			s = "";
+			for (k = 0; k < (5 - count); k++) {
+				s += " "; //"&nbsp"
+			}
+			for (j = 0; j < count; j++) {
+				s += `*`;
+			}
+			s += "\n"
+			output += s;
+		}
+		alert(output);
+	};
+
+	window.onload = function() {
+		btn7.onclick = f7;
+	};
+
+	function f7() {
+		here.innerHTML = "s=" + s;
+		here.innerHTML += "<br>i=" + i;
+		here.innerHTML += "<br>j=" + j;
+		here.innerHTML += "<br>k=" + k;
+	}
+</script>
+</head>
+<body>
+	<a href="javascript: a();">a!</a>
+	<a href="javascript: b();">b!</a>
+	<button id="btn7">글로벌 변수</button>
+	<article id="here"></article>
+</body>
+</html>
