@@ -3,71 +3,81 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<style>
-input:first-of-type {
-	background-color: red;
-}
-
-input:nth-of-type(2) {
-	background-color: blue;
-}
-
-input:nth-of-type(3) {
-	background-color: green;
-}
-
-input:nth-of-type(4) {
-	background-color: yellow;
-}
-</style>
 <script>
+	//	URI = URL(location)+URN(name)
 	window.onload = function() {
-		document.querySelector("input:first-of-type").onclick = call;
-		document.querySelector("input:nth-of-type(2)").onclick = function() {
-			this.value = "익명 함수";
+		document.getElementById("btn1").onclick = function() {
+			here.innerHTML = this.innerText;
+			var url = "https://search.naver.com/search.naver?where=nexearch&sm=top_hty&fbm=1&ie=utf8&query=날씨";
+			var url2 = encodeURIComponent(url);
+			here.innerHTML += "<br>" + url2
 		};
-		document.querySelector("input:nth-of-type(3)").onclick = function() {
-			this.value = "callback함수 ...함수를 매개변수로 사용";
+		document.querySelector("#btn2").onclick = function() {
+			here.innerHTML = this.innerText;
+			var s = "a=10;b=20;c=a+b;alert(c)";
+			eval(s);
 		};
-		document.querySelector("input:nth-of-type(4)").onclick = function() {
-			this.value = "클로저... 지역변수를 담은 함수를 리턴 => 지역변수를 계속 사용";
+		btn3.onclick = function() {
+			here.innerHTML = this.innerText;
+			var a = 10;
+			var b = "aa";
+			here.innerHTML += "<br>";
+			here.innerHTML += isNaN(a / b) ? "계산불가" : "가능";
+			here.innerHTML += "<br>";
+			here.innerHTML += (isNaN(NaN) == true) ? "o" : "x";
 		};
-		document.querySelector("input:nth-of-type(5)").onclick = function() {
-			this.value = "화살표함수는 람다 표현식과 유사.. 함수의 간단한 표현식";
+		document.querySelector("button:nth-of-type(4)").onclick = function() {
+			here.innerHTML = this.innerText;
+			var a = "100점";
+			here.innerHTML += "<br>" + (10 + Number(a));
+			here.innerHTML += "<br>" + (10 + parseInt(a));
 		};
-	};
-
-	function call() {
-		this.value = "명시적 함수";
+		document.querySelector("button:nth-of-type(5)").onclick = function() {
+			here.innerHTML = this.innerText;
+			call(10, 20, 40);
+			call();
+			call(100);
+			call(100,200);
+			call(100, "",200);
+			call("", "",200);
+			call("", "e",200);
+		};
+		//매개변수 default 값주기
+		function call(a, b, c) {
+			if(!a) a = 1;
+			if(!b) b = 2;
+			if(!c) c = 3;
+			here.innerHTML += "<br>" + (a + b + c);
+		}
+		btn6.onclick = function() {
+			var arr = [10,20,30,40,50];
+			arr.forEach(function(item, i) {
+				here.innerHTML += "<br>" + i +"번째:" + item+ ":" + arguments[0];
+			})
+		}
+		btn7.onclick = function() {
+			call2(1,2);
+			var arr=[1,2];
+			call2(30,40,...arr); //펼쳐저서 전달 ..마지막 파라미터로만 가능(자바는 변수)
+		}
+		function call2() {
+			here.innerHTML += "<br>" + (arguments[0] + arguments[1]);
+		}
+		function call2(a,b,...nums) {
+			here.innerHTML += "<br> 전개연산자이용:" + (a+b+nums[0] + nums[1]);
+		}
 	}
 </script>
 </head>
 <body>
-	<h1>함수연습</h1>
-	<input type="button" value="함수1">
-	<input type="button" value="함수2">
-	<input type="button" value="함수3">
-	<input type="button" value="함수4">
-	<input type="button" value="함수5">
-	<input id="btn6" type="button" value="setInterval">
-	<input id="btn7" type="button" value="setInterval중지">
-
-	<script>
-		var b6 = document.querySelector("#btn6");
-		b6.onclick = function() {
-			intervalID = setInterval(function() {
-				var r = Math.random() * 256;
-				var g = Math.random() * 256;
-				var b = Math.random() * 256;
-				b6.style.backgroundColor = `rgb(${r},${g},${b})`;
-			}, 1000);
-		};
-
-		document.querySelector("#btn7").onclick = function() {
-			clearInterval(intervalID);
-		};
-	</script>
-
-
+	<button id="btn1">uriencoding</button>
+	<button id="btn2">eval(실행문)</button>
+	<button id="btn3">isNaN</button>
+	<button>parsInt</button>
+	<button id="btn5">기본매개변수</button>
+	<button id="btn6"></button>
+	<button id="btn7">전개연산자</button>
+	<hr>
+	<div id="here"></div>
 </body>
 </html>
