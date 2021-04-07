@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+#here {
+	background-color: yellow;
+}
+</style>
+<script>
+	window.onload = function() {
+		here.innerHTML = this;
+		btn1.onclick = call;
+		btn2.onclick = call2;
+		btn3.onclick = call3;
+		btn4.onclick = call4;
+		btn5.onclick = call5;
+		btn6.onclick = call6;
+		btn7.onclick = call7;
+		btn8.onclick = call8;
+		btn9.onclick = call9;
+		btn10.onclick = call10;
+	}
+
+	function call() {
+		var obj = {
+			"name" : "hong",
+			age : 25,
+			"병역사항" : true,
+			study : function() {
+				alert("dk");
+			},
+			자기소개 : {
+				"학교" : "중앙"
+			},
+			score : [ 1, 2, 3, 4, 5 ]
+		};
+		here.innerHTML = "이름은" + obj.name;
+		here.innerHTML += "<br> 나이는" + obj["age"];
+		var aa = "age2";
+		here.innerHTML += "<br> 나이는" + obj[aa];
+		here.innerHTML += "<br> 군대는" + obj["병역사항"];
+		here.innerHTML += "<br> 자기소개는" + obj.자기소개.학교;
+		here.innerHTML += "<br> 점수는" + obj.score[4];
+		here.style["backgroundColor"] = "pink";
+		here.innerHTML += "<br> study는 " + obj["study"];
+		obj["study"]();
+	}
+	function call2() {
+		var person = {
+			name : "윤인성",
+			eat : function(food) {
+				alert("배고파" + food + this.name);
+			}
+		};
+		person.eat("보끔밥");
+		for ( var key in person) {
+			here.innerHTML += "<br>" + key + "-->" + person[key];
+		}
+
+	}
+	function call3() {
+		for ( var key in window) {
+			here.innerHTML += "<br>" + key + "-->" + window[key];
+		}
+	}
+	function call4() {
+		//Object 상속받아서
+		//Object toString() 매서드가 정의됨 : [object Object]
+		var person = {
+			name : "윤인성",
+			eat : function() {
+				alert("배고파" + food + this.name);
+			}
+		};
+		person.age = 30; //존재하는 속성이 없으면 추가
+		person.major = "컴공"; //존재하는 속성이 없으면 추가
+		person.name = "윤인성2";//존재하는 속성이 잇으면 수정
+		person.tosTring = function() {
+			return this.name + ":" + this.age + ":" + this.major
+		}
+		for ( var key in person) {
+			if (typeof person[key] == "function")
+				continue;
+			here.innerHTML += "<br>" + key + "-->" + person[key]
+		}
+	}
+	function call5() {
+		//배열+객체
+		var arr = [];
+		arr.push({
+			name : "aaa",
+			kor : 100,
+			eng : 78,
+			math : 88
+		});
+		arr.push({
+			name : "aaaa",
+			kor : 20,
+			eng : 48,
+			math : 28
+		});
+		arr.push({
+			name : "aaaaa",
+			kor : 30,
+			eng : 75,
+			math : 38
+		});
+		arr.push({
+			name : "aaaaaa",
+			kor : 89,
+			eng : 38,
+			math : 48
+		});
+		arr.push({
+			name : "aaaaaaa",
+			kor : 90,
+			eng : 74,
+			math : 88
+		});
+
+		//이름과 총점을 출력
+		for ( var i in arr) {
+			var total = 0;
+			for ( var key in arr[i]) {
+				if (key == 'name')
+					continue;
+				total += arr[i][key];
+			}
+			here.innerHTML += "<br>" + arr[i]["name"] + total;
+		}
+	}
+	function call6() {
+		var arr = [];
+		arr.push(makeperson("kim", 100, 90, 99));
+		arr.push(makeperson("kim2", 10, 90, 96));
+		arr.push(makeperson("kim3", 90, 80, 97));
+		arr.push(makeperson("kim4", 100, 80, 90));
+		arr.push(makeperson("kim5", 100, 70, 100));
+	}
+	function makePerson(name, kor, eng, math) {
+		var obj = {
+			"name" : name,
+			국어 : kor,
+			"영어" : eng,
+			math : math,
+			getSum : function() {
+				return this.국어 + this.영어 + this.math;
+			},
+			getAvg : function() {
+				return this.getSum() / 3;
+			},
+			toString : function() {
+				return this.name + "평균점수:" + this.getAvg();
+			}
+		};
+	}
+
+	function call7() {
+
+		var obj1 = {
+			name : "hong"
+		};
+		/* var obj2 = obj1; // 값만 복사
+		obj2.name = obj1.name; *///주소값 복사
+		var obj2 = _.clone(obj1);
+		obj1.name = "kim";
+		obj1.age = "20";
+		here.innerHTML += "<br> obj1.name=" + obj1.name + "obj2.name="
+				+ obj2.name;
+
+	}
+	function call8() {
+		//client -> server
+		//client <- client
+		//CSV: 100,200,AA,BB
+		//XML 본래데이터 사이즈의 3배  
+		//JSON  (java script object notaion)
+		//자바스크립트 형태의 문자열 -> 네트워크 정보교환용
+		//javaScript Object -> String
+		var obj1 = {
+			name : "홍",
+			age : 30,
+			major : "컴공"
+		};
+		here.innerHTML += "<br>" + JSON.stringify(obj1);
+
+		var s = '{"name":"hong","age":30,"major":"bio"}'
+		var obj2 = JSON.parse(s);
+		here.innerHTML += "<br>" + obj2.major;
+
+	}
+	function call9() {
+		var arr = [];
+		arr.push(new Student("kim", 100, 90, 99))
+		arr.push(new Student("kim2", 10, 90, 96))
+		arr.push(new Student("kim3", 90, 80, 97))
+		arr.push(new Student("kim4", 100, 80, 90))
+		arr.push(new Student("kim5", 100, 70, 100))
+		
+		Student.prototype.toString
+	}
+	//생성자 함수 new시에 자동호출
+	function Student(name, kor, eng, math) {
+		//var 접근방법
+		//getter setter
+		this.name = name;
+		this.kor = kor;
+		this.eng = eng;
+		this.수학 = math;
+		this.getSum = function() {
+			return this.kor + this.eng + this.수학;
+		};
+		this.getAvg = function() {
+			return this.getSum() / 3
+		};
+		this.toString = function() {
+			return this.name + "==>" + this.getAvg();
+		};
+	}
+	
+	function call10() {
+		Rectangle.prototype.getArea=function(){
+			return this.width*this.height;
+		};
+		Square.prototype = Rectangle.prototype;
+		Square.prototype.constructor = Square;
+		
+		var a= new Square(10);
+		alert(a.getArea());
+	}
+	//부모
+	function Rectangle(width, height) {
+		this.width = width;
+		this.height= height;
+	}
+	//자식
+	function Square(length) {
+		this.base = Rectangle;
+		this.base(length,length);
+	}
+</script>
+
+</head>
+<body>
+	<button id="btn1">object 사용법1</button>
+	<button id="btn2">object 사용법2</button>
+	<button id="btn3">object 사용법3</button>
+	<button id="btn4">object 사용법4</button>
+	<button id="btn5">object 사용법5</button>
+	<button id="btn6">함수로 객체만들기</button>
+	<button id="btn9">생성자 함수로 객체만들기</button>
+	<button id="btn7">복서(값, 주소)</button>
+	<button id="btn8">json</button>
+	<button id="btn10">상속</button>
+
+	<hr>
+	<div id="here"></div>
+</body>
+</html>
