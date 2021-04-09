@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+ul {border: 1px solid gray; padding: 10px; 
+	list-style-type: none;
+}
+.highlight{
+	background-color: green;
+}
+
+</style>
+
+
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script>
+	/* window.onload = function() {alert("load");}
+
+	 $(document).ready(function(){alert("jquery");});
+
+	 $(function(){
+	 alert("1");
+	 }); 
+	 */
+
+	$(document).ready(function() {
+		var s = $("#here").html();
+		$("#here").html(s + "<p>jQuery1</p>")
+	});
+	$(document).ready(function() {
+		var s = $("#here").html();
+		$("#here").html(s + "<p>jQuery2</p>")
+	});
+	$(function() {
+		var s = $("#here").html();
+		$("#here").html(s + "<p>jQuery3</p>")
+	});
+	$(function() {
+		var s = $("#here").html();
+		$("#here").html(s + "<p>jQuery4</p>")
+	});
+	$(function() {
+		$("#btn1").click(function() {
+			$("#here").html("버튼을 누릅니다");
+		});
+		$("#btn2").click(function() {
+			$("#here").css("color", "red");
+			var s = {
+				border : "1px solid green",
+				backgroundColor : "orange"
+			};
+			$("#here").css(s);
+		});
+		$("#btn3").click(function() {
+			$(".active").css("color", "pink");
+		});
+		$("#btn4").click(function() {
+			var arr = ["바나나","사과","오렌지","한라봉"];
+			var s = "";
+			$.each(arr, function(idx, item) {
+				s+=idx+"번째"+item+"<br>";
+			});
+			$("#here").html(s);
+		});
+		$("#btn5").click(function() {
+			var s ="<ul>";
+			$("h1,h2").each(function(idx,item){
+				s+="<li>"+$(item).html()+"</li>";
+			});
+			$("#here").html(s+"</ul>")
+		});
+		$("#btn6").click(function() {
+			var output = "<ul>";
+			$("#mydata p").each(function(idx, item) {
+				var s = $(item).html();
+				var name = s.substring(0,s.indexOf("-"));
+				var url = s.substring(s.indexOf("-")+1);
+				output += "<li><a href="+url+">"+name+"</a></li>"
+			});
+			$("#here").html(output+"</ul>");
+			$("h1, li").addClass("highlight");
+		});
+		$("#btn7").click(function() {
+			var obj = {"name":"김성휘", age:29};
+			var obj2 = {major:"생명공학", school:"cau"};
+			$.extend(obj, obj2, {phone:"011-999-8889"});
+			var s = "";
+			$.each(obj, function(key,val) {
+				s+="<br>"+key+"==>"+val;
+			});
+			$("#here").html(s);
+		});
+	});
+</script>
+</head>
+<body>
+	<h1>jQuery0</h1>
+	<h1 class="active">jQuery1</h1>
+	<h1 class="active">jQuery2</h1>
+	<h1 class="active">jQuery3</h1>
+	<h1>jQuery4</h1>
+	<button id="btn1">jquery 이용1</button>
+	<button id="btn2">CSS 변경1</button>
+	<button id="btn3">CSS 변경2</button>
+	<button id="btn4">each</button>
+	<button id="btn5">each_selector</button>
+	<button id="btn6">each_Lab</button>
+	<button id="btn7">extend</button>
+	<div id = "mydata">
+	<p>네이버-http://www.naver.com</p>
+	<p>다음-http://www.daum.net</p>
+	<p>구글-http://www.google.com</p>
+	<hr>
+	</div>
+	<div id="here">
+	
+	</div>
+</body>
+</html>
