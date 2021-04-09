@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="../js/jquery-3.6.0.min.js"></script>
+<style>
+.style1{border: 1px solid gray;
+padding:10px;
+margin:10px;
+background-color: skyblue;
+}
+
+.style2{border: 1px dotted gray;
+padding:10px;
+margin:10px;
+background-color: blue;
+}
+
+</style>
+<script>
+$(function() {
+	$("#btn1").click(function() {
+		$("h3:even").css("backgrounf-color","red")
+	});
+	
+	$("#btn2").click(function() {
+		$("h3").filter(":odd").css("backgrounf-color","black")
+	});
+	$("#btn3").click(function() {
+		$("h3").filter(function(idx, item) {
+			return idx==0||idx==4? true:false;
+		}).css("colcor","blue");
+		});
+	
+	$("#btn4").click(function() {
+		$("h3").css("border","1px solid red")
+		.filter(":odd").css("backgrounf-color","red")
+		.end()
+		.filter(":even").css("backgrounf-color","pink")
+		});
+	
+	$("#btn5").click(function() {
+		$("h3").eq(0).css("backgrounf-color","orange");
+		$("h3").first().css("color","white");		
+		$("h3").eq(-1).css("backgrounf-color","purple");		
+		$("h3").last().css("color","pink");	
+		$("h3").eq(3).css("backgrounf-color","purple");
+	});
+	
+	$("#btn8").click(function() {
+		$(this).parent().css("background-color", "black")
+		var s =$(this).text();
+		if(s=="활성화하기(parent)"){
+			$(this).text("비활성화하기");
+			$(this).parent().find("span").text("활성화하기");}
+		if(s=="비활성화하기(parent)"){
+			$(this).text("활성화하기");
+			$(this).parent().find("span").text("비활성화하기");}
+		
+	});
+	
+	$("#btn9").click(function() {
+		$("#here").addClass("style1");
+	});
+	$("#btn10").click(function() {
+		$("#here").removeClass("style1");
+	});
+	
+});
+</script>
+</head>
+<body>
+<h1>jQerydom</h1>
+<button id ="btn1">filter</button>
+<button id ="btn2">filter2</button>
+<button id ="btn3">filter3</button>
+<button id ="btn4">end</button>
+<button id ="btn9">클래스 추가</button>
+<button id ="btn10">클래스 제거</button>
+
+<hr>
+<h3>0</h3>
+<h3>1</h3>
+<h3>2</h3>
+<h3>3</h3>
+<h3>4</h3>
+<h3>5</h3>
+<h3>6</h3>
+<div id ="here">
+<span>비활성화하기</span>
+<button id ="btn8">활성화하기</button>
+</div>
+</body>
+</html>
