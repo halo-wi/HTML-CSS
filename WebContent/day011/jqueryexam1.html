@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="../js/jquery-3.6.0.min.js"></script>
+<script>
+	$(function() {
+		$("myfrm").on("submit", function(ev) {
+			var uobj = $("input[name='userid']");
+			if (!vaildate(uobj))
+				ev.preventDefault();
+			var uobj = $("input[name='userpw']");
+			if (!vaildate(uobj))
+				ev.preventDefault();
+		})
+		
+		var f =function(ev){alert(this); ev.stopPropagation();
+		};
+		
+		var f2 =function(){
+			$("#here").html($(this).val);
+		}
+		$("input[name='userpw']").on("keydown",f2);
+		
+		
+
+		function vaildate(obj) {
+			var val = $(obj).val();
+			if(val==""){
+				alert("!!!")
+				$(obj).focus();
+				return false;
+			}
+			return true;
+		}
+	})
+</script>
+
+<script>
+$(function name() {
+	$("#allcheck").on("change",function(){
+		if(this.checked){
+			$("#checkitem").children().prop("cheched", function(idx) {
+				return idx<3? true:flase	
+			})
+		}else{}
+	})
+}
+
+
+</script>
+</head>
+<body>
+	<form id="myfrm" action="loginChk.jsp" method="get">
+		아이디:<input type="text" name="userid" value="admin"><br>
+		비밀번호:<input type="text" name="userpw" value="1234"><br> <input
+			type="submit" value="로그인하기">
+	</form>
+	<div id="here"></div>
+
+	<div id="changetest">
+		<input type="checkbox" id=allcheck>all
+		<div id="checkitem">
+			<input type="checkbox">html <input type="checkbox">css
+			<input type="checkbox">jsp <input type="checkbox">jquery
+		</div>
+
+
+	</div>
+</body>
+</html>
