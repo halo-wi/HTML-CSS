@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="../js/jquery-3.6.0.min.js"></script>
+<script>
+$(function name() {
+	
+	$("button:first-of-type").on("click", function() {
+		$("p").show(1000);
+	})
+	$("button").eq(1).on("click", function() {
+		$("p").hide(2000);
+	})
+	$("button").eq(2).on("click", function() {
+		$("p").toggle(2000);
+	})
+	$("button").eq(3).on("click", function() {
+		$("p").slideToggle(2000);
+	})
+	$("button").eq(4).on("click", function() {
+		$("p").fadeToggle("slow");
+	})
+	$("button").eq(5).on("click", function() {
+		$("p").fadeTo(2000,0.5, function() {
+			$("#here").html("end")
+		});
+	})
+	$("button").eq(6).on("click", function() {
+		var obj = {
+				left:'250px',
+				opacity : '0.5',
+				height: '150px',
+				width: '150px'
+		};
+		$("p").animate(obj, 2000, function() {
+			$("#here").html("end")
+		});
+	})
+	
+	
+	
+})
+
+</script>
+
+</head>
+<body>
+<button>show</button>
+<button>hide</button>
+<button>toogle</button>
+<button>slideToggle</button>
+<button>fadeToggle</button>
+<button>fadeTo</button>
+<button>animate</button>
+<div id = "here"></div>
+<p>dkjdjidjiodjfifjdslifjsd</p>
+<p>dkjdjidjiodjfifjdslifjsd</p>
+</body>
+</html>

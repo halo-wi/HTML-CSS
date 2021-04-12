@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="../js/jquery-3.6.0.js"></script>
+<script>
+	$(function() {
+		$("#btn1").on("click",function() {
+					var xhr = new XMLHttpRequest();
+					xhr.open("get","제주특별자치도_제주시_푸드트럭허가구역_20200630_1609204425348_1469.csv",true);
+					xhr.onreadystatechange = function() {
+					if (xhr.readyState == 4 && xhr.status == 200) {
+					here.innerHTML = xhr.responseText;
+					}
+			}
+			xhr.send();
+		})
+
+		$("#btn2").on("click", function() {
+
+			$("#here").load("result.jsp");
+		});
+
+		$("#btn3").on("click", function() {
+
+			$.ajax({
+				url : "제주특별자치도_제주시_푸드트럭허가구역_20200630_1609204425348_1469.csv",
+				type : "get",
+				success : function(responseData) {
+					var arr = responseData["records"]
+					for (var i = 0; a < arr.length; i++) {
+						s += arr[i]["ss"] + "<br>";
+
+					}
+				},
+				error : function() {
+				}
+			});
+		});
+
+		$("#btn4").on("click",function() {
+			$.getJSON("제주특별자치도_제주시_푸드트럭허가구역_20200630_1609204425348_1469.json",
+					function(responseData) {
+						var arr = responseData["records"]
+						for (var i = 0; a < arr.length; i++) {
+						s += arr[i]["ss"] + "<br>";
+ 						}
+					$("#here").html(s)
+				});
+			});
+		
+		$("#btn5").on("click", function() {
+
+			$.ajax({
+				url : "loginChk.jsp",
+				type : "get",
+				data : { "userid":$("#userid").val(), "email":$("#useremail").val()},
+				success : function(responseData) {
+					$("#here").html(responseData);
+				},
+				error : function() {
+				}
+			});
+		});
+		
+		$("#btn6").on("click", function() {
+
+			$.ajax({
+				url : "loginChk.jsp",
+				type : "get",
+				data : { "userid":$("#userid").val(), "email":$("#useremail").val()},
+				success : function(responseData) {
+					$("#here").html(responseData);
+				},
+				error : function() {
+				}
+			});
+		});
+	})
+</script>
+</head>
+<body>
+	<h1>ajax Asynchronous Javascript and XML</h1>
+	<button id="btn1">javascript ajax</button>
+	<button id="btn2">jquery ajax load</button>
+	<button id="btn3">jquery ajax</button>
+	<button id="btn4">jquery ajax get json</button>
+	아이디:<input type="number" value="100" name="userid" id="userid">
+	이메일:<input type="text" value="100" name="useremail" id="useremail">
+	<button id="btn5">jquery ajax jsp</button>
+	<div id="here"></div>
+</body>
+</html>

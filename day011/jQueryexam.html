@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="../js/jquery-3.6.0.min.js"></script>
+<script>
+	$(function() {
+		$("#btn1").click(function() {
+			$("#here").html("<h1>이벤트이름 이용</h1>");
+		})
+		$("#btn2").on(function() {
+			$("#here").html("<h1>이벤트와 리스너 연결</h1>");
+		})
+		$("#btn3").on("mouseenter", function() {
+			$("#here").html("<h1>이벤트와 리스너 연결 mouseenter</h1>")
+			$(this).css("background-color", "orange");
+		})
+		$("#btn3").on("mouseleave", function() {
+			$("#here").html("<h1>이벤트와 리스너 연결 mouseleave</h1>")
+			$(this).css("background-color", "lightgreen");
+		})
+		$("#btn4").on("click", function() {
+			var obj = {};
+			obj.mouseenter = (function() {
+				$("#here").html("<h1>이벤트와 리스너 연결 mouseenter</h1>")
+				$(this).css("background-color", "orange")
+			})
+			obj.mouseleave = (function() {
+				$("#here").html("<h1>이벤트와 리스너 연결 mouseleave</h1>")
+				$(this).css("background-color", "lightgreen")
+			})
+			$("#here").on(obj);
+		});
+		$("#btn5").click(function() {
+			
+			var f1 = (function() {
+				$("#here").html("<h1>이벤트와 리스너 연결 mouseenter</h1>")
+				$(this).css("background-color", "orange")
+			});
+			var f2 = (function() {
+				$("#here").html("<h1>이벤트와 리스너 연결 mouseleave</h1>")
+				$(this).css("background-color", "lightgreen")
+			});
+			$("#here").hover(f1,f2);
+		});
+		
+		$("#btn6").click(function() {	
+			$("#here").off();
+		});
+		
+		$("#btn7").click(function() {	
+			$("#here").one("click",function() {
+				alert("1");
+				$(this).css("color","blue");
+			});
+					
+		});
+		
+	});
+</script>
+
+<script>
+function call(a,b,c) {
+	$("#here").html(a+b+c);
+}
+$(function() {
+	call(1,2,3);
+	$("#btn8").on("click",function(event){
+		var s = "x "
+		
+		
+		
+	});
+})
+</script>
+</head>
+<body>
+
+</body>
+<button id="btn1">이벤트1</button>
+<button id="btn2">이벤트2</button>
+<button id="btn3">이벤트3</button>
+<button id="btn4">이벤트4</button>
+<button id="btn5">이벤트5</button>
+<button id="btn6">이벤트 제거(off)</button>
+<button id="btn7">이벤트 1회</button>
+<hr>
+<div id="here"></div>
+</html>
